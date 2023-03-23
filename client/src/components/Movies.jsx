@@ -165,7 +165,7 @@ export default function Movies() {
                     <ModalBody>
                         
                         {/* Add your rating input fields here */}
-                        {cookies.get(userId)?<div>
+                        {cookies.get("token")?<div>
                             <p>Selected Movie : {selectedtitle}</p>
                             <div className="star-rating">
                                 {[...Array(5)].map((star, index) => {
@@ -198,7 +198,7 @@ export default function Movies() {
                         <Button colorScheme='blue' onClick={() => setModalOpen(false)}>
                             Cancel
                         </Button>
-                        {cookies.get(userId)?<Button colorScheme='blue' onClick={handleRatingSubmit}>Submit</Button>:null}
+                        {cookies.get('token')?<Button colorScheme='blue' onClick={handleRatingSubmit}>Submit</Button>:null}
                     </ModalFooter>
                 </ModalContent>
             </Modal>
