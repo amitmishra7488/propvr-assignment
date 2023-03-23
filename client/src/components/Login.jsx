@@ -21,7 +21,7 @@ function Login() {
 
     const display = async (email, password) => {
         try {
-            const res = await axios.post('https://propvr-assignment.vercel.app/users/login', {
+            const res = await axios.post('https://propvr-backend.vercel.app/users/login', {
                 email: email,
                 password: password
             })
