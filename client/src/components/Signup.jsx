@@ -21,7 +21,7 @@ function Signup() {
         
 
         try {
-            const res = await axios.post('https://friendzone-backend-5d8r.vercel.app/user/signup', {
+            const res = await axios.post('https://localhost:8080/user/signup', {
                 name: username,
                 email: email,
                 password: password

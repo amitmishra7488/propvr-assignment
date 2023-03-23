@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, Box, ModalCloseButton, Button } from '@chakra-ui/react';
-import '../Style/capsule.css';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, Box, ModalCloseButton, Button, Center } from '@chakra-ui/react';
+import '../Style/movie.css';
 import Pagination from './Pagination';
 import axios from 'axios';
 import Cookies from 'universal-cookie'
 import { useToast } from '@chakra-ui/react'
-export default function Capsules() {
+import { Spinner } from '@chakra-ui/react'
+export default function Movies() {
     const toast = useToast()
     const cookies = new Cookies();
     const [data, setData] = useState([]);
@@ -78,7 +79,6 @@ export default function Capsules() {
     };
 
     const handleDeleteRatingClick = async (postId, Title) => {
-        console.log(postId, cookies.get('userId'))
         try {
             const res = await axios.delete('http://localhost:8080/movies/removeRating', {
                 data: {
@@ -96,7 +96,7 @@ export default function Capsules() {
             display();
 
         } catch (error) {
-            console.log(cookies.get('userId'))
+            
             toast({
                 title: "Something went wrong " + cookies.get('token'),
                 position: 'top',
@@ -109,9 +109,9 @@ export default function Capsules() {
 
     return (
         <>
-            <div className='capsule-container'>
-                <div className='capsules-card-container'>
-                    <div className='capsules-card'>
+            <div className='movie-container'>
+                <div className='movies-card-container'>
+                    <div className='movies-card'>
                         {paginateData.length > 0 ? (
                             paginateData.map((el, i) => {
                                 return (
@@ -137,7 +137,14 @@ export default function Capsules() {
                                 );
                             })
                         ) : (
-                            'Loading.....'
+                            <div style={{display:"flex",textAlign:"center"}}><Spinner
+                            thickness='4px'
+                            speed='0.65s'
+                            emptyColor='gray.200'
+                            color='blue.500'
+                            size='xl'
+                        /></div>
+                            
                         )}
                     </div>
                 </div>

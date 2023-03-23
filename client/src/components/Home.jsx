@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from './Footer'
 import BannerSection from './BannerSection'
-import Capsules from './Capsules'
+import Movies from './Movies'
 import Navbar from './Navbar'
 
 export default function Hme() {
@@ -9,7 +9,7 @@ export default function Hme() {
     <div>
       <Navbar/>
       <BannerSection/>
-      <Capsules/>
+      <Movies/>
       <Footer/>
     </div>
   )

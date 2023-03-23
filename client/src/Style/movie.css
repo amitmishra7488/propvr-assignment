@@ -1,13 +1,10 @@
-.capsule-container{
-    margin-top: 7%;
-}
 
 
-  .capsules-card-container{
+  .movies-card-container{
     margin-top: 5%;
 
   }
-  .capsules-card{
+  .movies-card{
     
     width: 80%;
     margin: auto;
@@ -18,9 +15,13 @@
     
   }
  
-  .capsules-card>div{
+  .movies-card>div{
     text-align: center;
-    width: 70%;
+    width: 90%;
+  }
+  .movies-card>div>img{
+    width: 100%;
+    height: 250px;
   }
 
   .card {
@@ -80,10 +81,10 @@
 
     @media (min-width:601px) and (max-width: 850px) {
       /*Mobile View */
-      .capsule-container{
+      .movie-container{
         margin-top: 12%;
     }
-      .capsules-card{
+      .movies-card{
         width: 85%;
         margin: auto;
         display: grid;
@@ -94,10 +95,10 @@
       }
     }
     @media (max-width:600px){
-      .capsule-container{
+      .movie-container{
         margin-top: 15%;
     }
-      .capsules-card{
+      .movies-card{
         width: 90%;
         margin: auto;
         display: grid;

@@ -36,7 +36,6 @@ function Login() {
                 maxAge: 24 * 60 * 60
             })
             setTimeout(() => {
-
                 navigate("/");
             }, 200)
 
@@ -47,11 +46,7 @@ function Login() {
                 duration: 4000,
                 isClosable: true,
             })
-            setTimeout(() => {
-
-                console.log(res.data);
-                console.log(cookies.get('userId'))
-            }, 200)
+            
         }
         catch (error) {
             setLoading(false);

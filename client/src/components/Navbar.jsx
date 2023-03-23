@@ -21,7 +21,6 @@ const Navbar = () => {
     }
     const token=cookies.get('token', { path: '/' });
     const userId=cookies.get('userId', { path: '/' });
-    console.log(token,userId);
     const closeMobileMenu = () => setClick(false);
     return (
         <div className="header">
@@ -32,9 +31,6 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <ul className={click ? "nav-options active" : "nav-options"}>
-                    <li className="option" onClick={closeMobileMenu}>
-                        <Link style={{ color: "#fff", textDecoration: "none" }} to="/home">Home</Link>
-                    </li>
                     <li className="option mobile-option" onClick={closeMobileMenu}>
 
                         <button onClick={handleLogout}>Logout</button>
@@ -50,15 +46,6 @@ const Navbar = () => {
                 )}
             </div>
             <ul className="signin-up">
-                <li className="sign-in" onClick={closeMobileMenu}>
-                    <Link to="#">
-                        <img
-                            src="https://png.pngtree.com/png-clipart/20221207/ourmid/pngtree-business-man-avatar-png-image_6514640.png"
-                            alt="img"
-                            style={{ width: "50px", borderRadius: "50%", backgroundColor: 'lightcoral' }}
-                        />
-                    </Link>
-                </li>
                 <li onClick={closeMobileMenu}>
                     {/* <Link to="" > */}
                         <button className="signup-btn" onClick={handleLogout}>{token ? "Logout" : "Login"}</button>
