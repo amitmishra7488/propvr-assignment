@@ -26,7 +26,7 @@ export default function Movies() {
 
     const display = async () => {
         try {
-            const res = await fetch('http://localhost:8080/movies');
+            const res = await fetch('https://propvr-assignment.vercel.app/movies');
             const data = await res.json();
 
             setData(data);
@@ -70,7 +70,7 @@ export default function Movies() {
             return alert("Please select a rating");
         }
         try {
-            const res = await axios.put('http://localhost:8080/movies/rating',
+            const res = await axios.put('https://propvr-assignment.vercel.app/movies/rating',
                 {
                     rating: rating,
                     id: selectedId
@@ -97,7 +97,7 @@ export default function Movies() {
 
     const handleDeleteRatingClick = async (postId, Title) => {
         try {
-            const res = await axios.delete('http://localhost:8080/movies/removeRating', {
+            const res = await axios.delete('https://propvr-assignment.vercel.app/movies/removeRating', {
                 data: {
                     id: postId,
                     userId: cookies.get('userId')
