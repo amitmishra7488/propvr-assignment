@@ -21,7 +21,7 @@ function Signup() {
         
 
         try {
-            const res = await axios.post('https://propvr-backend.vercel.app/user/signup', {
+            const res = await axios.post('https://propvr-backend.vercel.app/users/signup', {
                 name: username,
                 email: email,
                 password: password
