@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, Box, ModalCloseButton, Button, Center } from '@chakra-ui/react';
 import '../Style/movie.css';
 import Pagination from './Pagination';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'universal-cookie'
 import { useToast } from '@chakra-ui/react'
 import { Spinner } from '@chakra-ui/react'
 export default function Movies() {
+    const navigate = useNavigate();
     const toast = useToast()
     const cookies = new Cookies();
     const [data, setData] = useState([]);
@@ -43,12 +45,27 @@ export default function Movies() {
     const paginateData = data.slice(firstPostIndex, lastPostIndex);
 
     const handleRatingClick = (id, Title) => {
-        setSelectedId(id);
-        setSelectedTitle(Title);
-        setModalOpen(true);
+        // if(!cookies.get(userId)){
+        //     toast({
+        //         title: `Please Login First!`,
+        //         position: 'top',
+        //         status: 'error',
+        //         duration: 4000,
+        //         isClosable: true,
+        //     })
+
+        //     return navigate("/login");
+        // }
+        // else{
+            setSelectedId(id);
+            setSelectedTitle(Title);
+            setModalOpen(true);
+        // }
+        
     };
 
     const handleRatingSubmit = async () => {
+        
         if (rating < 1) {
             return alert("Please select a rating");
         }
@@ -98,7 +115,7 @@ export default function Movies() {
         } catch (error) {
             
             toast({
-                title: "Something went wrong " + cookies.get('token'),
+                title: "Something went wrong",
                 position: 'top',
                 status: 'error',
                 duration: 3000,
@@ -158,9 +175,10 @@ export default function Movies() {
                     <ModalHeader>Give Your Rating</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <p>Selected Movie : {selectedtitle}</p>
+                        
                         {/* Add your rating input fields here */}
-                        <div>
+                        {cookies.get(userId)?<div>
+                            <p>Selected Movie : {selectedtitle}</p>
                             <div className="star-rating">
                                 {[...Array(5)].map((star, index) => {
                                     index += 1;
@@ -179,14 +197,20 @@ export default function Movies() {
                                 })}
                             </div>
                         </div>
+                        :
+                        <div className="login-popup">
+                            
+                            <h1>Please login First!</h1>
+                            </div>
+                        }
 
 
                     </ModalBody>
                     <ModalFooter>
-                        <Button variant='ghost' onClick={() => setModalOpen(false)}>
+                        <Button colorScheme='blue' onClick={() => setModalOpen(false)}>
                             Cancel
                         </Button>
-                        <Button colorScheme='blue' onClick={handleRatingSubmit}>Submit</Button>
+                        {cookies.get(userId)?<Button colorScheme='blue' onClick={handleRatingSubmit}>Submit</Button>:null}
                     </ModalFooter>
                 </ModalContent>
             </Modal>

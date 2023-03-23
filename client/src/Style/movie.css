@@ -124,4 +124,12 @@
     .off {
       color: #ccc;
     }
+
+    .login-popup{
+      color: red;
+      font-size: 30px;
+      font-family: 400;
+      text-align: center;
+
+    }
     
