@@ -45,22 +45,10 @@ export default function Movies() {
     const paginateData = data.slice(firstPostIndex, lastPostIndex);
 
     const handleRatingClick = (id, Title) => {
-        // if(!cookies.get(userId)){
-        //     toast({
-        //         title: `Please Login First!`,
-        //         position: 'top',
-        //         status: 'error',
-        //         duration: 4000,
-        //         isClosable: true,
-        //     })
-
-        //     return navigate("/login");
-        // }
-        // else{
-            setSelectedId(id);
-            setSelectedTitle(Title);
-            setModalOpen(true);
-        // }
+       
+        setSelectedId(id);
+        setSelectedTitle(Title);
+        setModalOpen(true);
         
     };
 
